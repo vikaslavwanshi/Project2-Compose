@@ -1,0 +1,24 @@
+version: '3'
+services:
+  dind:
+    image: docker:20.10-dind
+    privileged: true
+    networks:
+      - jenkins_network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+    networks:
+      - jenkins_network
+    depends_on:
+      - dind
+    environment:
+      - DOCKER_HOST=tcp://dind:2376
+
+networks:
+  jenkins_network:
+
