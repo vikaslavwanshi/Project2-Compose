@@ -1,9 +1,14 @@
 pipeline {
-    agent any 
+    agent {
+        docker {
+            image 'node:16' // Use Node 16 Docker image as the build agent
+            args '--network host' // Optionally, if you need to use the host network
+        }
+    }
     stages {
-        stage('Stage 1') {
+        stage('Build') {
             steps {
-                echo 'Hello world!' 
+                sh 'npm install --save' // Run npm install
             }
         }
     }
