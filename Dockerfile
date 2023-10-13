@@ -14,7 +14,13 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 # Add the Docker repository for the "bullseye" distribution (Debian 11)
 RUN echo "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable" > /etc/apt/sources.list.d/docker.list
 
-# Install the Docker client
+# Install the Docker client directly from the Docker website
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+
+# Install Docker client
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
+RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
 RUN apt-get update && apt-get install -y docker-ce-cli
 
 USER jenkins
