@@ -9,7 +9,7 @@ volumes:
 
 services:
   jenkins:
-    image: myjenkins-blueocean
+    image: jenkins/jenkins:lts  # Use the official Jenkins LTS image
     restart: always
     networks:
       - docker
