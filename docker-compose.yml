@@ -2,6 +2,8 @@ version: '3'
 
 services:
   jenkins:
+    image: jenkins-docker
+    privileged: true
     build:
       context: .
     volumes:
@@ -9,6 +11,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock  # Mount the Docker socket
     ports:
       - "8080:8080"
+      - "50001:50000"
     networks:
       - jenkins
     depends_on:
